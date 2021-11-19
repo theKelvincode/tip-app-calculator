@@ -27,8 +27,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: (https://www.frontendmentor.io/challenges/tip-calculator-app-ugJNGbJUX/hub/tip-calculator-app-using-html-css-js-rmB1OCAqP)
+- Live Site URL: (https://hardcore-euclid-3ffe65.netlify.app/)
 
 ## My process
 
@@ -44,8 +44,7 @@ Users should be able to:
 
 ### What I learned
 
-```CSS grid
-  improving my css grid skills
+```More on CSS grid
 ```
 
 
@@ -54,17 +53,10 @@ Users should be able to:
 I will keep working on my Javascript skills.
 
 
-
-### Useful resources
-
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
-
-
 ## Author
 
 - Website - [Kelvin Code]
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
-- Twitter - [@yourusername](https://www.twitter.com/kelviniseh)
+- Frontend Mentor - [@thekelvincode](https://www.frontendmentor.io/profile/theKelvincode)
+- Twitter - [@kelviniseh](https://www.twitter.com/kelviniseh)
 
 
