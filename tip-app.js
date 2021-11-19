@@ -56,44 +56,52 @@ tipBtns.forEach(function (btn){
     if (peopleInputValue < 1){
       feedback_2.textContent = 'Enter number of people!';
       peopleInput.classList.add('red-input');
-    }
-
-    switch (percentNum){
-      case '5%':
-        answer = (amountInput.value * (5 / 100) / peopleInputValue);
-        tipFigure.textContent += answer.toFixed(2);
-        totalAnswer = (answer + (amountInput.value / peopleInputValue)).toFixed(2);
-        totalFigure.textContent = `$${totalAnswer}`;
-      break;
-
-      case '10%':
-        answer = (amountInput.value * (10/100) / peopleInputValue);
-        tipFigure.textContent += answer.toFixed(2);
-        totalAnswer = (answer + (amountInput.value / peopleInputValue)).toFixed(2);
-        totalFigure.textContent = `$${totalAnswer}`;
-      break;
-
-      case '15%':
-        answer = (amountInput.value * (15/100) / peopleInputValue);
-        tipFigure.textContent += answer.toFixed(2);
-        totalAnswer = (answer + (amountInput.value / peopleInputValue)).toFixed(2);
-        totalFigure.textContent = `$${totalAnswer}`;
-      break;
-
-      case '25%':
-        answer = (amountInput.value * (25/100) / peopleInputValue);
-        tipFigure.textContent += answer.toFixed(2);
-        totalAnswer = (answer + (amountInput.value / peopleInputValue)).toFixed(2);
-        totalFigure.textContent = `$${totalAnswer}`;
-      break;
-
-      case '50%':
-        answer = (amountInput.value * (50/100) / peopleInputValue);
-        tipFigure.textContent += answer.toFixed(2);
-        totalAnswer = (answer + (amountInput.value / peopleInputValue)).toFixed(2);
-        totalFigure.textContent = `$${totalAnswer}`;
-      break;
-    }
+      tipFigure.textContent = `$0.00`;
+      totalFigure.textContent = `$0.00`;
+    } 
+    else if (peopleInputValue < 0){
+      feedback_2.textContent = 'Number of people can NOT be less than 1!';
+      peopleInput.classList.add('red-input');
+      tipFigure.textContent = `$0.00`;
+      totalFigure.textContent = `$0.00`;
+    } else {
+      switch (percentNum){
+        case '5%':
+          answer = (amountInput.value * (5 / 100) / peopleInputValue);
+          tipFigure.textContent += answer.toFixed(2);
+          totalAnswer = (answer + (amountInput.value / peopleInputValue)).toFixed(2);
+          totalFigure.textContent = `$${totalAnswer}`;
+        break;
+  
+        case '10%':
+          answer = (amountInput.value * (10/100) / peopleInputValue);
+          tipFigure.textContent += answer.toFixed(2);
+          totalAnswer = (answer + (amountInput.value / peopleInputValue)).toFixed(2);
+          totalFigure.textContent = `$${totalAnswer}`;
+        break;
+  
+        case '15%':
+          answer = (amountInput.value * (15/100) / peopleInputValue);
+          tipFigure.textContent += answer.toFixed(2);
+          totalAnswer = (answer + (amountInput.value / peopleInputValue)).toFixed(2);
+          totalFigure.textContent = `$${totalAnswer}`;
+        break;
+  
+        case '25%':
+          answer = (amountInput.value * (25/100) / peopleInputValue);
+          tipFigure.textContent += answer.toFixed(2);
+          totalAnswer = (answer + (amountInput.value / peopleInputValue)).toFixed(2);
+          totalFigure.textContent = `$${totalAnswer}`;
+        break;
+  
+        case '50%':
+          answer = (amountInput.value * (50/100) / peopleInputValue);
+          tipFigure.textContent += answer.toFixed(2);
+          totalAnswer = (answer + (amountInput.value / peopleInputValue)).toFixed(2);
+          totalFigure.textContent = `$${totalAnswer}`;
+        break;
+      }; 
+    };
   });
 });
 // end of % buttons
