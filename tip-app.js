@@ -51,6 +51,11 @@ tipBtns.forEach(function (btn){
     let peopleInputValue = peopleInput.value;
     let percentNum = btnValue;
 
+    percentageNum = function (value) {
+      
+    }
+    console.log(percentageNum(btnValue))
+
     tipFigure.innerHTML = `$`;
 
     if (peopleInputValue < 1){
@@ -108,23 +113,22 @@ tipBtns.forEach(function (btn){
 
 
 // event listener for custom event button
-customPercent.addEventListener('click', function(e){
-  if (e.target.value !== 0){
-    customPercent.addEventListener('input', function(e){
-      let customValue = e.target.value;
-      let peopleInputValue = peopleInput.value;
-      tipFigure.innerHTML = `$`;
-      answer = (amountInput.value * (customValue / 100) / peopleInputValue);
-      tipFigure.textContent += answer.toFixed(2);
-      totalAnswer = (answer + (amountInput.value / peopleInputValue)).toFixed(2);
-      totalFigure.textContent = `$${totalAnswer}`;
-    }) 
+customPercent.addEventListener('change', function(e){
+  let customValue = e.target.value;
+  tipFigure.innerHTML = `$`;
+  console.log(customValue)
+
+  if (!amountInput.value == 0 && !peopleInput.value == 0){
+    answer = ((amountInput.value * (customValue / 100) / peopleInput.value));
+    tipFigure.textContent += answer.toFixed(2);
+    totalAnswer = (answer + (amountInput.value / peopleInput.value)).toFixed(2);
+    totalFigure.textContent = `$${totalAnswer}`;
   } else {
-    customPercent.focus();
-    customPercent.classList.add('red-input')
-    feedback_custom.textContent = 'Enter custom number!';
+    feedback.textContent = 'Bill amount can NOT be less than 1';
+    feedback_2.textContent = 'Enter number of people!';
+    tipFigure.textContent = `$0.00`;
+    totalFigure.textContent = `$0.00`;
   }
-  // end of event listener for custom event button
 })
 
 
@@ -135,4 +139,7 @@ resetBtn.addEventListener('click', function(){
   customPercent.value = ``;
   tipFigure.textContent = `$0.00`;
   totalFigure.textContent = `$0.00`;
+  feedback.textContent = ``;
+  feedback_2.textContent = ``;
+  feedback_custom.textContent = ``;
 })
