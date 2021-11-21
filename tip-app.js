@@ -113,7 +113,7 @@ tipBtns.forEach(function (btn){
 
 
 // event listener for custom event button
-customPercent.addEventListener('change', function(e){
+customPercent.addEventListener('input', function(e){
   let customValue = e.target.value;
   tipFigure.innerHTML = `$`;
   console.log(customValue)
