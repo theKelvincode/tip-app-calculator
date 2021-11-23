@@ -11,6 +11,7 @@ const totalFigure = document.querySelector('.total-figure');
 const customPercent = document.querySelector('.custom-percent')
 const resetBtn = document.querySelector('.reset')
 
+
 // The bill input event listener -- also checks to make sure that figure
 //  above 0 is entered.
 amountInput.addEventListener('input', function(e){
@@ -23,7 +24,6 @@ amountInput.addEventListener('input', function(e){
   else {
     feedback.textContent = '';
     amountInput.classList.remove('red-input');
-    // let currentValue = `$${value}`;
   }
 })
 // end of bill input ...
@@ -47,18 +47,25 @@ peopleInput.addEventListener('input', function(e){
 // event listener for % buttons 
 tipBtns.forEach(function (btn){
   btn.addEventListener('click', function(e){
-    let btnValue = e.target.textContent;
+    let btnPercentValue = e.target.dataset.id;
     let peopleInputValue = peopleInput.value;
-    let percentNum = btnValue;
-
-    percentageNum = function (value) {
-      
+    let amountInputValue = amountInput.value;
+    
+   
+    // calculate tip amount
+    tipAmountCalc = function() {
+      answer = (amountInputValue * (btnPercentValue/100) / peopleInputValue);
+      return answer;
     }
-    console.log(percentageNum(btnValue))
 
-    tipFigure.innerHTML = `$`;
+    // calculate total amount (including tip)
+    totalAmountCalc = function(value){
+      totalAnswer = (value + (amountInput.value / peopleInputValue));
+      return totalAnswer.toFixed(2);
+    }
 
-    if (peopleInputValue < 1){
+    if (peopleInputValue < 1 && amountInputValue < 1){
+      feedback.textContent = 'Enter bill amount!';
       feedback_2.textContent = 'Enter number of people!';
       peopleInput.classList.add('red-input');
       tipFigure.textContent = `$0.00`;
@@ -70,42 +77,10 @@ tipBtns.forEach(function (btn){
       tipFigure.textContent = `$0.00`;
       totalFigure.textContent = `$0.00`;
     } else {
-      switch (percentNum){
-        case '5%':
-          answer = (amountInput.value * (5 / 100) / peopleInputValue);
-          tipFigure.textContent += answer.toFixed(2);
-          totalAnswer = (answer + (amountInput.value / peopleInputValue)).toFixed(2);
-          totalFigure.textContent = `$${totalAnswer}`;
-        break;
-  
-        case '10%':
-          answer = (amountInput.value * (10/100) / peopleInputValue);
-          tipFigure.textContent += answer.toFixed(2);
-          totalAnswer = (answer + (amountInput.value / peopleInputValue)).toFixed(2);
-          totalFigure.textContent = `$${totalAnswer}`;
-        break;
-  
-        case '15%':
-          answer = (amountInput.value * (15/100) / peopleInputValue);
-          tipFigure.textContent += answer.toFixed(2);
-          totalAnswer = (answer + (amountInput.value / peopleInputValue)).toFixed(2);
-          totalFigure.textContent = `$${totalAnswer}`;
-        break;
-  
-        case '25%':
-          answer = (amountInput.value * (25/100) / peopleInputValue);
-          tipFigure.textContent += answer.toFixed(2);
-          totalAnswer = (answer + (amountInput.value / peopleInputValue)).toFixed(2);
-          totalFigure.textContent = `$${totalAnswer}`;
-        break;
-  
-        case '50%':
-          answer = (amountInput.value * (50/100) / peopleInputValue);
-          tipFigure.textContent += answer.toFixed(2);
-          totalAnswer = (answer + (amountInput.value / peopleInputValue)).toFixed(2);
-          totalFigure.textContent = `$${totalAnswer}`;
-        break;
-      }; 
+      answer = tipAmountCalc();
+      tipFigure.textContent = `$${answer.toFixed(2)}`;
+      totalAnswer = totalAmountCalc(answer);
+      totalFigure.textContent = `$${totalAnswer}`;
     };
   });
 });
@@ -116,7 +91,6 @@ tipBtns.forEach(function (btn){
 customPercent.addEventListener('input', function(e){
   let customValue = e.target.value;
   tipFigure.innerHTML = `$`;
-  console.log(customValue)
 
   if (!amountInput.value == 0 && !peopleInput.value == 0){
     answer = ((amountInput.value * (customValue / 100) / peopleInput.value));
